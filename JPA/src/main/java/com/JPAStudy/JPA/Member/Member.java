@@ -1,21 +1,27 @@
 package com.JPAStudy.JPA.Member;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Data
-@Table(name = "MEMBER")
+@Getter
+@Setter
 @Entity
 public class Member {
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "MEMBER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "AGE")
-    private Integer age;
+    private String city;
+    private String street;
+    private String zipCode;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<Order>();
 }

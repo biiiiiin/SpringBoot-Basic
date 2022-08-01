@@ -22,14 +22,14 @@ public class MemberServiceTests {
         //given
         Member member1 = new Member();
         member1.setName("bin");
-        member1.setAge(25);
+        //member1.setAge(25);
         member1.setId(1L);
         memberRepository.save(member1);
-        member1.setAge(27);
+        //member1.setAge(27);
 
         Member member2 = new Member();
         member2.setName("jin");
-        member2.setAge(20);
+        //member2.setAge(20);
         member2.setId(2L);
         memberRepository.save(member2);
 

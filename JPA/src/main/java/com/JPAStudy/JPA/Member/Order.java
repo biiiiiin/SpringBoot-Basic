@@ -12,20 +12,20 @@ import java.util.List;
 @Setter
 @Table(name = "ORDERS")
 @Entity
-public class Order {
+public class Order extends BaseEntity{
     @Id
     @Column(name = "ORDER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 
